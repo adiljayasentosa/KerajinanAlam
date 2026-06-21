@@ -1,0 +1,460 @@
+/* ============================================================
+   ADILJAYA — kontak.css  (STANDALONE)
+   Includes: reset, variables, navbar, footer, kontak page
+   ============================================================ */
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; font-size: 16px; }
+img   { display: block; max-width: 100%; }
+a     { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; line-height: 1.15; }
+
+/* ── Variables ───────────────────────────────────────────── */
+:root {
+  --cream:        #f5f0e8;
+  --warm-white:   #faf7f2;
+  --bamboo:       #c8a96e;
+  --bamboo-light: #dfc99a;
+  --moss:         #4a5c2f;
+  --moss-light:   #6a7e45;
+  --text-dark:    #2c2416;
+  --text-mid:     #5c4e36;
+  --text-light:   #8a7a62;
+  --border:       rgba(200, 169, 110, 0.28);
+  --shadow-soft:  0 4px 24px rgba(74, 92, 47, 0.08);
+  --shadow-card:  0 8px 40px rgba(44, 36, 22, 0.12);
+  --radius:       14px;
+  --radius-lg:    20px;
+  --nav-h:        72px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245, 240, 232, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, box-shadow .3s;
+}
+.navbar.scrolled { border-color: var(--border); box-shadow: var(--shadow-soft); }
+
+.navbar__inner {
+  max-width: 1280px; margin: 0 auto;
+  height: var(--nav-h);
+  display: flex; align-items: center; gap: 1.5rem; padding: 0 2rem;
+}
+
+.navbar__logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.navbar__logo-text { display: flex; flex-direction: column; }
+.navbar__brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--moss); line-height: 1;
+}
+.navbar__tagline { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.05em; }
+
+.navbar__links { display: flex; align-items: center; gap: 0.1rem; margin: 0 auto; }
+.navbar__link {
+  font-size: 0.875rem; color: var(--text-mid);
+  padding: 0.4rem 0.75rem; border-radius: 6px;
+  transition: color .2s, background .2s;
+  white-space: nowrap; position: relative;
+}
+.navbar__link:hover { color: var(--moss); background: rgba(74,92,47,.07); }
+.navbar__link.active { color: var(--moss); font-weight: 500; }
+.navbar__link.active::after {
+  content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -2px; width: 18px; height: 2px;
+  background: var(--bamboo); border-radius: 2px;
+}
+
+.navbar__actions { display: flex; align-items: center; gap: .25rem; flex-shrink: 0; }
+.navbar__icon-btn {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; color: var(--text-mid);
+  transition: color .2s, background .2s;
+}
+.navbar__icon-btn:hover { color: var(--moss); background: rgba(74,92,47,.07); }
+.cart-btn { position: relative; }
+.cart-badge {
+  position: absolute; top: 4px; right: 4px;
+  background: var(--moss); color: white;
+  font-size: .6rem; font-weight: 600;
+  min-width: 16px; height: 16px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; padding: 0 3px;
+}
+
+.hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 36px; height: 36px; padding: 6px;
+  border-radius: 8px; transition: background .2s;
+}
+.hamburger:hover { background: rgba(74,92,47,.07); }
+.hamburger span {
+  display: block; width: 100%; height: 2px;
+  background: var(--text-mid); border-radius: 2px;
+  transition: transform .3s, opacity .3s; transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: var(--warm-white); border-top: 1px solid var(--border);
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+}
+.mobile-menu.open { max-height: 500px; padding: .75rem 0; }
+.mobile-menu__link {
+  display: block; padding: .85rem 2rem;
+  font-size: 1rem; color: var(--text-mid);
+  border-left: 3px solid transparent;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.mobile-menu__link:hover,
+.mobile-menu__link.active { color: var(--moss); border-left-color: var(--bamboo); background: rgba(74,92,47,.04); }
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--text-dark); color: rgba(245,240,232,.7); padding: 3rem 2rem 2rem; }
+.footer__inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer__brand { display: flex; flex-direction: column; gap: .35rem; }
+.footer__brand span {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 700; color: var(--bamboo);
+}
+.footer__brand p { font-size: .82rem; color: rgba(245,240,232,.5); margin-top: .2rem; }
+.footer__copy    { font-size: .8rem; color: rgba(245,240,232,.35); }
+
+
+/* ============================================================
+   KONTAK PAGE WRAPPER
+   ============================================================ */
+.kontak-page {
+  position: relative;
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+  background: var(--cream);
+  /* Subtle batik texture */
+  background-image:
+    radial-gradient(ellipse 70% 50% at 20% 50%, rgba(74,92,47,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(200,169,110,0.07) 0%, transparent 60%);
+}
+
+/* ── Dekorasi bambu kiri / kanan ─────────────────────────── */
+.deco {
+  position: absolute; top: var(--nav-h);
+  pointer-events: none; z-index: 0;
+}
+.deco--left  { left: 0; width: 180px; height: calc(100% - var(--nav-h)); }
+.deco--right { right: 0; width: 180px; height: calc(100% - var(--nav-h)); }
+.deco--mountain {
+  bottom: 0; left: 0; right: 0; width: 100%;
+  height: 200px;
+}
+.deco svg { width: 100%; height: 100%; }
+
+
+/* ── Kontak inner layout ─────────────────────────────────── */
+.kontak-inner {
+  position: relative; z-index: 1;
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  padding: 5rem 2rem 3rem;
+  min-height: calc(100vh - var(--nav-h) - 80px);
+  align-items: center;
+}
+
+
+/* ============================================================
+   KOLOM KIRI
+   ============================================================ */
+.kontak-left { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.kontak-left__sub {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .78rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--bamboo);
+}
+
+.kontak-left__title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--moss); line-height: 1.15;
+}
+
+/* Divider ornamen */
+.kontak-left__divider {
+  display: flex; align-items: center; gap: 12px;
+}
+.kontak-left__divider span {
+  display: block; width: 44px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--bamboo), transparent);
+}
+
+.kontak-left__desc {
+  font-size: .95rem; color: var(--text-mid); line-height: 1.8;
+  max-width: 420px;
+}
+
+/* Info kontak items */
+.kontak-info { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+.kontak-info__item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.kontak-info__item:last-child { border-bottom: none; }
+
+.kontak-info__icon {
+  flex-shrink: 0;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--moss);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(74,92,47,.25);
+}
+
+.kontak-info__text { display: flex; flex-direction: column; gap: 2px; }
+.kontak-info__text strong {
+  font-size: .95rem; font-weight: 600; color: var(--text-dark);
+}
+.kontak-info__text span {
+  font-size: .85rem; color: var(--text-mid);
+}
+
+/* Sosmed */
+.sosmed { display: flex; flex-direction: column; gap: .85rem; margin-top: .5rem; }
+.sosmed__label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: .9rem; font-weight: 600; color: var(--text-dark);
+}
+.sosmed__icons { display: flex; gap: .75rem; }
+
+.sosmed__btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--moss);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  box-shadow: 0 4px 12px rgba(74,92,47,.22);
+}
+.sosmed__btn:hover {
+  background: var(--moss-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(74,92,47,.3);
+}
+
+
+/* ============================================================
+   KOLOM KANAN — FORM CARD
+   ============================================================ */
+.kontak-right { display: flex; flex-direction: column; }
+
+.form-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2.25rem;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+
+.form-card__header {
+  display: flex; align-items: center; gap: 10px;
+}
+.form-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 700; color: var(--text-dark);
+}
+.form-card__sub { font-size: .88rem; color: var(--text-light); }
+
+/* Form */
+.kontak-form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: .45rem; }
+
+.form-label {
+  font-size: .83rem; font-weight: 600;
+  color: var(--text-dark); letter-spacing: .01em;
+}
+
+.form-input {
+  width: 100%;
+  padding: .8rem 1rem;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem; color: var(--text-dark);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.form-input::placeholder { color: var(--text-light); }
+.form-input:focus {
+  border-color: var(--bamboo);
+  background: var(--warm-white);
+  box-shadow: 0 0 0 3px rgba(200,169,110,.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+  line-height: 1.6;
+}
+
+/* Notifikasi */
+.form-notif {
+  font-size: .85rem; padding: 0;
+  border-radius: 8px; transition: all .3s;
+}
+.form-notif--error {
+  color: #b91c1c; background: rgba(185,28,28,.07);
+  border: 1px solid rgba(185,28,28,.2);
+  padding: .7rem 1rem;
+}
+.form-notif--success {
+  color: var(--moss); background: rgba(74,92,47,.07);
+  border: 1px solid rgba(74,92,47,.2);
+  padding: .7rem 1rem;
+}
+
+/* Tombol kirim */
+.form-submit {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 1rem 1.5rem;
+  background: var(--moss); color: white;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; font-weight: 500;
+  letter-spacing: .02em;
+  box-shadow: 0 4px 16px rgba(74,92,47,.28);
+  transition: background .25s, transform .2s, box-shadow .25s;
+  margin-top: .25rem;
+}
+.form-submit:hover {
+  background: var(--moss-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74,92,47,.32);
+}
+.form-submit:active { transform: translateY(0); }
+
+
+/* ============================================================
+   FOOTER STRIP (ucapan terima kasih)
+   ============================================================ */
+.kontak-footer-strip {
+  position: relative; z-index: 1;
+  max-width: 1160px; margin: 0 auto 3rem;
+  padding: 0 2rem;
+  display: flex; align-items: center; gap: 1.5rem;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(74,92,47,.06);
+}
+
+.kontak-footer-strip__icon {
+  flex-shrink: 0;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.kontak-footer-strip__title {
+  font-size: 1rem; font-weight: 600; color: var(--text-dark);
+  margin-bottom: .3rem;
+}
+.kontak-footer-strip__desc { font-size: .85rem; color: var(--text-mid); }
+
+
+/* ============================================================
+   RESPONSIVE — NAVBAR MOBILE ≤ 768px
+   ============================================================ */
+@media (max-width: 900px) {
+  .navbar__links   { display: none; }
+  .navbar__actions { margin-left: auto; }
+  .hamburger       { display: flex; margin-left: .5rem; }
+  .mobile-menu     { display: flex; }
+
+  .deco--left,
+  .deco--right { width: 120px; }
+
+  .kontak-inner { padding: 4rem 2rem 2rem; }
+}
+
+@media (max-width: 860px) {
+  .kontak-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 1.5rem 2rem;
+  }
+  .kontak-left { align-items: center; text-align: center; }
+  .kontak-left__desc { text-align: center; }
+  .kontak-left__divider { justify-content: center; }
+  .kontak-info__item { justify-content: flex-start; }
+  .sosmed { align-items: center; }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE ≤ 640px
+   ============================================================ */
+@media (max-width: 640px) {
+  :root { --nav-h: 60px; }
+
+  .footer__inner { flex-direction: column; align-items: flex-start; }
+
+  .deco--left,
+  .deco--right { display: none; }
+
+  .kontak-inner { padding: 2.5rem 1.25rem 1.5rem; }
+
+  .kontak-left__title { font-size: 2rem; }
+
+  .form-card { padding: 1.75rem 1.25rem; }
+  .form-row  { grid-template-columns: 1fr; }
+
+  .kontak-footer-strip { padding: 1.25rem 1.25rem; gap: 1rem; margin: 0 1.25rem 2rem; }
+  .kontak-footer-strip__icon { width: 46px; height: 46px; }
+  .kontak-footer-strip__title { font-size: .92rem; }
+  .kontak-footer-strip__desc  { font-size: .78rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL ≤ 380px
+   ============================================================ */
+@media (max-width: 380px) {
+  .kontak-left__title { font-size: 1.75rem; }
+  .form-card { padding: 1.25rem 1rem; }
+  .sosmed__btn,
+  .kontak-info__icon { width: 40px; height: 40px; }
+}

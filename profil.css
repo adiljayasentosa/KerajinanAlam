@@ -1,0 +1,811 @@
+/* ============================================================
+   ADILJAYA — profil.css  (STANDALONE, tidak perlu style.css)
+   Sudah termasuk: reset, variables, navbar, footer, profil page
+   ============================================================ */
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; font-size: 16px; }
+img   { display: block; max-width: 100%; }
+a     { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; }
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* ── CSS Variables ───────────────────────────────────────── */
+:root {
+  --cream:        #f5f0e8;
+  --warm-white:   #faf7f2;
+  --bamboo:       #c8a96e;
+  --bamboo-light: #dfc99a;
+  --moss:         #4a5c2f;
+  --moss-light:   #6a7e45;
+  --bark:         #7a5c38;
+  --text-dark:    #2c2416;
+  --text-mid:     #5c4e36;
+  --text-light:   #8a7a62;
+  --border:       rgba(200, 169, 110, 0.25);
+  --shadow-soft:  0 4px 24px rgba(74, 92, 47, 0.08);
+  --shadow-card:  0 8px 32px rgba(44, 36, 22, 0.10);
+  --radius:       12px;
+  --radius-lg:    20px;
+  --nav-h:        72px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(245, 240, 232, 0.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.navbar.scrolled {
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.navbar__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.navbar__brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--moss);
+  letter-spacing: 0.02em;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 auto;
+}
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-mid);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+.navbar__link:hover {
+  color: var(--moss);
+  background: rgba(74, 92, 47, 0.07);
+}
+.navbar__link.active {
+  color: var(--moss);
+  font-weight: 500;
+}
+.navbar__link.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -4px;
+  width: 18px; height: 2px;
+  background: var(--bamboo);
+  border-radius: 2px;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.navbar__icon-btn {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  color: var(--text-mid);
+  transition: color 0.2s, background 0.2s;
+}
+.navbar__icon-btn:hover {
+  color: var(--moss);
+  background: rgba(74, 92, 47, 0.07);
+}
+.cart-btn { position: relative; }
+.cart-badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: var(--moss);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  min-width: 16px; height: 16px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.hamburger:hover { background: rgba(74, 92, 47, 0.07); }
+.hamburger span {
+  display: block;
+  width: 100%; height: 2px;
+  background: var(--text-mid);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+.mobile-menu.open {
+  max-height: 400px;
+  padding: 0.75rem 0;
+}
+.mobile-menu__link {
+  display: block;
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  color: var(--text-mid);
+  border-left: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.mobile-menu__link:hover,
+.mobile-menu__link.active {
+  color: var(--moss);
+  border-left-color: var(--bamboo);
+  background: rgba(74, 92, 47, 0.04);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--text-dark);
+  color: rgba(245, 240, 232, 0.7);
+  padding: 3rem 2rem 2rem;
+}
+.footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.footer__brand span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bamboo);
+}
+.footer__brand p {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 232, 0.5);
+  margin-top: 0.2rem;
+}
+.footer__copy {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.35);
+}
+
+
+/* ============================================================
+   PROFIL PAGE WRAPPER
+   ============================================================ */
+.profil-page {
+  position: relative;
+  min-height: 100vh;
+  padding-top: calc(var(--nav-h) + 4rem);
+  padding-bottom: 6rem;
+  background: var(--cream);
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(200,169,110,0.10) 0%, transparent 60%),
+    repeating-linear-gradient(
+      45deg,
+      transparent, transparent 40px,
+      rgba(200,169,110,0.022) 40px,
+      rgba(200,169,110,0.022) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 40px,
+      rgba(74,92,47,0.015) 40px,
+      rgba(74,92,47,0.015) 41px
+    );
+}
+
+
+/* ============================================================
+   DEKORASI BAMBU KIRI & KANAN
+   ============================================================ */
+.profil-deco {
+  position: absolute;
+  top: var(--nav-h);
+  width: 160px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.profil-deco--left  { left: 0; }
+.profil-deco--right { right: 0; transform: scaleX(-1); }
+.profil-deco svg { width: 100%; height: 100%; }
+
+
+/* ============================================================
+   PROFIL HEADER
+   ============================================================ */
+.profil-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 1.5rem;
+  animation: fadeDown 0.7s ease both;
+}
+.profil-header__title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: var(--moss);
+  margin-bottom: 1.1rem;
+}
+.profil-header__ornamen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 1.4rem;
+}
+.ornamen-line {
+  display: block;
+  width: 56px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--bamboo), transparent);
+  border-radius: 2px;
+}
+.profil-header__desc {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.br-desktop { display: block; }
+
+
+/* ============================================================
+   PROFIL GRID
+   ============================================================ */
+.profil-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem 1.5rem;
+}
+
+
+/* ============================================================
+   MEMBER CARD
+   ============================================================ */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: center;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.member-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.member-card__photo-wrap {
+  position: relative;
+  width: 130px; height: 130px;
+}
+
+.member-card__photo-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(200, 169, 110, 0.35);
+  transition: border-color 0.3s, transform 0.4s, opacity 0.3s;
+  opacity: 0.7;
+}
+.member-card:hover .member-card__photo-ring {
+  border-color: var(--bamboo);
+  transform: scale(1.08) rotate(8deg);
+  opacity: 1;
+}
+
+.member-card__photo {
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8e0d0, #d8cfc0);
+  border: 3px solid var(--bamboo-light);
+  box-shadow:
+    0 4px 16px rgba(74, 92, 47, 0.12),
+    0 0 0 1px rgba(200, 169, 110, 0.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.member-card:hover .member-card__photo {
+  transform: scale(1.05);
+  box-shadow:
+    0 8px 28px rgba(74, 92, 47, 0.18),
+    0 0 0 1px rgba(200, 169, 110, 0.45);
+}
+
+/* Ganti .photo-placeholder dengan <img src="..."> saat foto siap */
+.member-card__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+}
+
+.photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, #ede4d4, #ddd3c0);
+  border-radius: 50%;
+}
+.photo-placeholder svg { opacity: 0.5; }
+
+.member-card__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+.member-card:hover .member-card__name { color: var(--moss); }
+
+.member-card__kelas {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.kelas-arrow {
+  font-size: 0.65rem;
+  color: var(--bamboo);
+  opacity: 0.75;
+}
+
+
+/* ============================================================
+   ANGGOTA KE-11 — SELALU DI TENGAH (semua breakpoint)
+   ============================================================ */
+
+/* Desktop: grid 5 kolom → kolom ke-3 (tengah) */
+.member-card--last {
+  grid-column: 3 / 4;
+}
+
+/* ============================================================
+   ANIMASI
+   ============================================================ */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   RESPONSIVE — NAVBAR MOBILE ≤ 768px
+   ============================================================ */
+@media (max-width: 900px) {
+  .navbar__links   { display: none; }
+  .navbar__actions { margin-left: auto; }
+  .hamburger       { display: flex; margin-left: 0.5rem; }
+  .mobile-menu     { display: flex; }
+}
+
+@media (max-width: 900px) {
+  .profil-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1rem;
+    padding: 0 3rem;
+  }
+  .profil-deco { width: 100px; }
+  .member-card__photo-wrap,
+  .member-card__photo { width: 110px; height: 110px; }
+
+  /* Tablet: grid 3 kolom → kolom ke-2 (tengah) */
+  .member-card--last {
+    grid-column: 2 / 3;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE ≤ 768px
+   ============================================================ */
+@media (max-width: 768px) {
+  :root { --nav-h: 60px; }
+
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+  .profil-page { padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 4rem; }
+  .profil-deco { display: none; }
+  .profil-header { margin-bottom: 2.5rem; }
+  .profil-header__title { font-size: 2rem; }
+  .profil-header__desc  { font-size: 0.88rem; }
+  .br-desktop { display: none; }
+
+  .profil-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+    padding: 0 1.25rem;
+    max-width: 100%;
+  }
+  .member-card__photo-wrap,
+  .member-card__photo { width: 100px; height: 100px; }
+  .member-card__name  { font-size: 0.92rem; }
+  .member-card__kelas { font-size: 0.74rem; }
+
+  /* Mobile: grid 2 kolom → span keduanya, center */
+  .member-card--last {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: fit-content;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL ≤ 380px
+   ============================================================ */
+@media (max-width: 380px) {
+  .profil-grid { gap: 1.5rem 0.75rem; }
+  .member-card__photo-wrap,
+  .member-card__photo { width: 86px; height: 86px; }
+}
+
+
+/* ============================================================
+   TABEL STRUKTUR & PEMBAGIAN TUGAS
+   ============================================================ */
+.struktur-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.struktur-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.struktur-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--moss);
+  margin-bottom: 1rem;
+}
+
+.struktur-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.struktur-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+
+.struktur-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  background: var(--warm-white);
+}
+
+/* Header tabel */
+.struktur-table thead tr {
+  background: var(--moss);
+  color: white;
+}
+.struktur-table thead th {
+  padding: .9rem 1.1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.struktur-table thead th:first-child {
+  width: 52px;
+  text-align: center;
+  border-radius: var(--radius-lg) 0 0 0;
+}
+.struktur-table thead th:last-child {
+  border-radius: 0 var(--radius-lg) 0 0;
+}
+
+/* Body tabel */
+.struktur-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.struktur-table tbody tr:last-child { border-bottom: none; }
+.struktur-table tbody tr:hover { background: rgba(200,169,110,.06); }
+
+.struktur-table tbody td {
+  padding: .85rem 1.1rem;
+  color: var(--text-dark);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.struktur-table tbody td:first-child {
+  text-align: center;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: .8rem;
+}
+.struktur-table tbody td:nth-child(2) strong {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.struktur-table tbody td:nth-child(3) {
+  white-space: nowrap;
+  color: var(--text-mid);
+}
+.struktur-table tbody td:last-child {
+  color: var(--text-mid);
+  font-size: .84rem;
+}
+
+.jabatan-icon {
+  margin-right: 4px;
+}
+
+
+/* ============================================================
+   3 KOTAK: PRODUK, BROSUR, PROPOSAL
+   ============================================================ */
+.profil-dokumen-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.profil-dokumen-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* Kotak 1 — foto produk dengan overlay teks */
+.profil-dok-card--img {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 260px;
+  box-shadow: var(--shadow-card);
+}
+.profil-dok-card--img > img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.profil-dok-img-ph {
+  position: absolute; inset: 0;
+  display: none;
+  align-items: center; justify-content: center; flex-direction: column; gap: .5rem;
+  background: linear-gradient(135deg, #d4cbb8, #b8ad98);
+}
+.profil-dok-img-ph span { font-size: .75rem; color: var(--text-mid); }
+
+.profil-dok-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(20,16,8,.80) 0%, transparent 100%);
+  padding: 1.75rem 1.5rem 1.5rem;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.profil-dok-overlay__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+.profil-dok-overlay__desc {
+  font-size: .8rem;
+  color: rgba(255,255,255,.82);
+  line-height: 1.55;
+}
+
+/* Kotak 2 & 3 — brosur & proposal */
+.profil-dok-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s, box-shadow .25s;
+}
+.profil-dok-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.profil-dok-card__imgbox {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream);
+}
+.profil-dok-card__imgbox img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.profil-dok-img-ph--sm {
+  position: absolute; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #ede8de, #e0d9cc);
+}
+
+.profil-dok-card__body {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex; flex-direction: column; gap: .6rem; flex: 1;
+}
+.profil-dok-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.profil-dok-card__desc {
+  font-size: .82rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Tombol shared */
+.profil-dok-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: .6rem 1.1rem;
+  border-radius: 8px;
+  font-size: .82rem;
+  font-weight: 500;
+  border: 1.5px solid var(--moss);
+  color: var(--moss);
+  background: transparent;
+  width: fit-content;
+  transition: background .2s, color .2s;
+}
+.profil-dok-btn:hover {
+  background: var(--moss);
+  color: white;
+}
+.profil-dok-btn--light {
+  border-color: rgba(255,255,255,.8);
+  color: white;
+}
+.profil-dok-btn--light:hover {
+  background: rgba(255,255,255,.18);
+  color: white;
+}
+
+/* Quote bawah */
+.profil-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 1.75rem 2rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+.profil-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .profil-dokumen-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profil-dok-card--img {
+    grid-column: span 2;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .struktur-section { padding: 3rem 1.25rem 1.5rem; }
+  .profil-dokumen-section { padding: 1.5rem 1.25rem 3rem; }
+  .profil-dokumen-grid { grid-template-columns: 1fr; }
+  .profil-dok-card--img { grid-column: span 1; }
+  .profil-quote { flex-direction: column; gap: .5rem; }
+  .profil-quote p { font-size: 1rem; }
+}

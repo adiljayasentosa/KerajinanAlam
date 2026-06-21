@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak — Kerajinan Alam</title>
+  <link rel="stylesheet" href="kontak.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="6"  y="2" width="4" height="28" rx="2" fill="#4a5c2f"/>
+          <rect x="13" y="6" width="4" height="22" rx="2" fill="#4a5c2f"/>
+          <rect x="20" y="2" width="4" height="28" rx="2" fill="#4a5c2f"/>
+          <path d="M6 10 Q10 7 14 10" stroke="#c8a96e" stroke-width="1.5" fill="none"/>
+          <path d="M13 14 Q17 11 21 14" stroke="#c8a96e" stroke-width="1.5" fill="none"/>
+        </svg>
+        <div class="navbar__logo-text">
+          <span class="navbar__brand">Kerajinan Alam</span>
+        </div>
+      </a>
+
+      <nav class="navbar__links">
+        <a href="beranda.html"  class="navbar__link">Beranda</a>
+        <a href="produk.html"           class="navbar__link">Produk</a>
+        <a href="profile.html" class="navbar__link">Profile</a>
+        <a href="catatan-guru.html" class="navbar__link">Catatan</a>
+        <a href="dokumentasi.html"           class="navbar__link">Dokumentasi</a>
+        <a href="kontak.html" class="navbar__link active">Kontak</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" aria-label="Cari">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="navbar__icon-btn" aria-label="Akun">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="navbar__icon-btn cart-btn" aria-label="Keranjang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="beranda.html"  class="mobile-menu__link">Beranda</a>
+      <a href="produk.html" class="mobile-menu__link">Produk</a>
+      <a href="profile.html"           class="mobile-menu__link">Profile</a>
+      <a href="catatan-guru.html" class="mobile-menu__link">Catatan</a>
+      <a href="dokumentasi.html"           class="mobile-menu__link">Dokumentasi</a>
+      <a href="kontak.html" class="mobile-menu__link active">Kontak</a>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="kontak-page">
+
+    <!-- Dekorasi bambu kiri -->
+    <div class="deco deco--left" aria-hidden="true">
+      <svg viewBox="0 0 180 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20"  y="0"  width="22" height="700" rx="11" fill="#4a5c2f" opacity="0.10"/>
+        <rect x="60"  y="50" width="16" height="650" rx="8"  fill="#4a5c2f" opacity="0.07"/>
+        <rect x="100" y="20" width="12" height="680" rx="6"  fill="#4a5c2f" opacity="0.05"/>
+        <!-- Ruas -->
+        <rect x="18"  y="100" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="18"  y="240" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="18"  y="380" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="18"  y="520" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="58"  y="160" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <rect x="58"  y="320" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <rect x="58"  y="480" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <!-- Daun -->
+        <path d="M42 110 Q10 85 0 50 Q35 70 42 110Z"   fill="#4a5c2f" opacity="0.12"/>
+        <path d="M42 110 Q75 90 85 55 Q50 75 42 110Z"  fill="#4a5c2f" opacity="0.09"/>
+        <path d="M42 250 Q10 230 0 195 Q35 215 42 250Z" fill="#4a5c2f" opacity="0.10"/>
+        <path d="M78 170 Q108 148 118 115 Q85 135 78 170Z" fill="#4a5c2f" opacity="0.08"/>
+        <path d="M42 390 Q8 370 -2 335 Q33 355 42 390Z"  fill="#4a5c2f" opacity="0.09"/>
+      </svg>
+    </div>
+
+    <!-- Dekorasi bambu kanan -->
+    <div class="deco deco--right" aria-hidden="true">
+      <svg viewBox="0 0 180 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="138" y="0"  width="22" height="700" rx="11" fill="#4a5c2f" opacity="0.10"/>
+        <rect x="104" y="50" width="16" height="650" rx="8"  fill="#4a5c2f" opacity="0.07"/>
+        <rect x="68"  y="20" width="12" height="680" rx="6"  fill="#4a5c2f" opacity="0.05"/>
+        <rect x="136" y="100" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="136" y="240" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="136" y="380" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="136" y="520" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="102" y="160" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <rect x="102" y="320" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <rect x="102" y="480" width="20" height="4" rx="2" fill="#c8a96e" opacity="0.15"/>
+        <path d="M138 110 Q170 85 180 50 Q145 70 138 110Z"  fill="#4a5c2f" opacity="0.12"/>
+        <path d="M138 110 Q105 90 95 55 Q130 75 138 110Z"   fill="#4a5c2f" opacity="0.09"/>
+        <path d="M138 250 Q170 230 180 195 Q145 215 138 250Z" fill="#4a5c2f" opacity="0.10"/>
+        <path d="M102 170 Q72 148 62 115 Q95 135 102 170Z"   fill="#4a5c2f" opacity="0.08"/>
+        <path d="M138 390 Q172 370 182 335 Q147 355 138 390Z" fill="#4a5c2f" opacity="0.09"/>
+      </svg>
+    </div>
+
+    <!-- Gunung & langit watermark bawah -->
+    <div class="deco deco--mountain" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <path d="M0 200 L360 60 L520 130 L720 20 L900 110 L1080 50 L1260 130 L1440 80 L1440 200Z" fill="#4a5c2f" opacity="0.05"/>
+        <path d="M0 200 L200 100 L400 150 L600 70 L800 140 L1000 80 L1200 150 L1440 100 L1440 200Z" fill="#4a5c2f" opacity="0.04"/>
+      </svg>
+    </div>
+
+    <!-- ===== KONTEN UTAMA ===== -->
+    <div class="kontak-inner">
+
+      <!-- KOLOM KIRI: info -->
+      <div class="kontak-left">
+        <p class="kontak-left__sub">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e"/>
+          </svg>
+          HUBUNGI KAMI
+        </p>
+
+        <h1 class="kontak-left__title">Mari Terhubung<br/>Bersama Kerajinan Alam</h1>
+
+        <div class="kontak-left__divider">
+          <span></span>
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+            <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e" opacity="0.9"/>
+            <path d="M10 18 Q3 14 3 9 Q6 3 10 8"  fill="#c8a96e" opacity="0.45"/>
+            <path d="M10 18 Q17 14 17 9 Q14 3 10 8" fill="#c8a96e" opacity="0.45"/>
+          </svg>
+          <span></span>
+        </div>
+
+        <p class="kontak-left__desc">
+          Kami senang mendengar dari Anda. Jangan ragu untuk menghubungi kami untuk pertanyaan, kolaborasi, atau informasi lebih lanjut.
+        </p>
+
+        <!-- Info kontak -->
+        <ul class="kontak-info">
+          <li class="kontak-info__item">
+            <div class="kontak-info__icon">
+              <!-- WhatsApp -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.508 5.827L.057 23.093a.75.75 0 0 0 .921.921l5.266-1.451A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.2-1.444l-.372-.222-3.856 1.063 1.063-3.856-.222-.372A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
+            </div>
+            <div class="kontak-info__text">
+              <strong>WhatsApp</strong>
+              <span>+62 896 8217 2915</span>
+            </div>
+          </li>
+
+          <li class="kontak-info__item">
+            <div class="kontak-info__icon">
+              <!-- Email -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="kontak-info__text">
+              <strong>Email</strong>
+              <span>smkibg3bgr@gmail.com</span>
+            </div>
+          </li>
+
+          <li class="kontak-info__item">
+            <div class="kontak-info__icon">
+              <!-- Lokasi -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+                <path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="kontak-info__text">
+              <strong>Lokasi</strong>
+              <span>smkibg03 JL.kabandungan no. 56, sinargalih, Kec. Tamansari,Kab Bogor, Bogor, Indonesia 16610</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Sosmed -->
+        <div class="sosmed">
+          <p class="sosmed__label">
+            Ikuti Kami
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e"/>
+            </svg>
+          </p>
+          <div class="sosmed__icons">
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/smkibg3.official?igsh=NGgxYzN4d2czdXRh" class="sosmed__btn" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+              </svg>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@smkibg3official?_r=1&_t=ZS-96gNiFQf841" class="sosmed__btn" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
+              </svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- KOLOM KANAN: form -->
+      <div class="kontak-right">
+        <div class="form-card">
+
+          <div class="form-card__header">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+              <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e" opacity="0.9"/>
+              <path d="M10 18 Q3 14 3 9 Q6 3 10 8"  fill="#c8a96e" opacity="0.45"/>
+              <path d="M10 18 Q17 14 17 9 Q14 3 10 8" fill="#c8a96e" opacity="0.45"/>
+            </svg>
+            <h2 class="form-card__title">Kirim Pesan</h2>
+          </div>
+          <p class="form-card__sub">Isi formulir di bawah ini, kami akan segera merespons Anda.</p>
+
+          <!-- Form dikirim ke email via mailto -->
+          <form class="kontak-form" id="kontakForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nama">Nama Lengkap</label>
+                <input class="form-input" type="text" id="nama" name="nama"
+                  placeholder="Masukkan nama Anda" required autocomplete="name"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email"
+                  placeholder="Masukkan email Anda" required autocomplete="email"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subjek">Subjek</label>
+              <input class="form-input" type="text" id="subjek" name="subjek"
+                placeholder="Masukkan subjek pesan" required/>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pesan">Pesan</label>
+              <textarea class="form-input form-textarea" id="pesan" name="pesan"
+                placeholder="Tulis pesan Anda di sini..." rows="6" required></textarea>
+            </div>
+
+            <!-- Notifikasi -->
+            <div class="form-notif" id="formNotif" aria-live="polite"></div>
+
+            <button class="form-submit" type="submit">
+              Kirim Pesan
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div><!-- /kontak-inner -->
+
+    <!-- ===== FOOTER STRIP ===== -->
+    <div class="kontak-footer-strip">
+      <div class="kontak-footer-strip__icon">
+        <svg width="28" height="28" viewBox="0 0 20 20" fill="none">
+          <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e" opacity="0.9"/>
+          <path d="M10 18 Q3 14 3 9 Q6 3 10 8"  fill="#c8a96e" opacity="0.45"/>
+          <path d="M10 18 Q17 14 17 9 Q14 3 10 8" fill="#c8a96e" opacity="0.45"/>
+        </svg>
+      </div>
+      <div>
+        <p class="kontak-footer-strip__title">Terima kasih telah mengunjungi website kami.</p>
+        <p class="kontak-footer-strip__desc">Setiap karya yang kami buat, dihasilkan dengan cinta untuk alam dan budaya Nusantara.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="logo.png" alt="" height="auto" width="100px">
+        <span>Kerajinan Alam</span>
+        <p>Keindahan Nusantara dalam setiap serat bambu.</p>
+      </div>
+      <div class="footer__copy">&copy; 2025 Adiljaya. Semua hak dilindungi.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-menu__link').forEach(l => {
+      l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+    });
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Form — kirim via mailto ke akunbelajar0628@gmail.com
+    document.getElementById('kontakForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nama   = document.getElementById('nama').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const subjek = document.getElementById('subjek').value.trim();
+      const pesan  = document.getElementById('pesan').value.trim();
+      const notif  = document.getElementById('formNotif');
+
+      // Validasi
+      if (!nama || !email || !subjek || !pesan) {
+        notif.className = 'form-notif form-notif--error';
+        notif.textContent = 'Harap isi semua kolom sebelum mengirim.';
+        return;
+      }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        notif.className = 'form-notif form-notif--error';
+        notif.textContent = 'Format email tidak valid.';
+        return;
+      }
+
+      // Buka mailto — kirim ke akunbelajar0628@gmail.com
+      const body = `Nama: ${nama}%0AEmail Pengirim: ${email}%0A%0APesan:%0A${encodeURIComponent(pesan)}`;
+      const mailtoLink = `mailto:akunbelajar0628@gmail.com?subject=${encodeURIComponent(subjek)}&body=${body}`;
+      window.location.href = mailtoLink;
+
+      notif.className = 'form-notif form-notif--success';
+      notif.textContent = '✓ Aplikasi email Anda terbuka. Silakan kirim pesan dari sana.';
+
+      // Reset form setelah 3 detik
+      setTimeout(() => {
+        this.reset();
+        notif.className = 'form-notif';
+        notif.textContent = '';
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

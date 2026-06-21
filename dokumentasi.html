@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dokumentasi — Kerajinan Alam</title>
+  <link rel="stylesheet" href="dokumen.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="6"  y="2" width="4" height="28" rx="2" fill="#4a5c2f"/>
+          <rect x="13" y="6" width="4" height="22" rx="2" fill="#4a5c2f"/>
+          <rect x="20" y="2" width="4" height="28" rx="2" fill="#4a5c2f"/>
+          <path d="M6 10 Q10 7 14 10" stroke="#c8a96e" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="navbar__logo-text">
+          <span class="navbar__brand">Kerajinan Alam</span>
+        </div>
+      </a>
+
+      <nav class="navbar__links">
+        <a href="beranda.html" class="navbar__link">Beranda</a>
+        <a href="produk.html" class="navbar__link">Produk</a>
+        <a href="profile.html" class="navbar__link">Profile</a>
+        <a href="catatan-guru.html" class="navbar__link">Catatan</a>
+        <a href="dokumentasi.html" class="navbar__link active">Dokumentasi</a>
+        <a href="kontak.html" class="navbar__link">Kontak</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn search-btn" aria-label="Cari">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="navbar__icon-btn cart-btn" aria-label="Keranjang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="beranda.html" class="mobile-menu__link">Beranda</a>
+      <a href="produk.html" class="mobile-menu__link">Produk</a>
+      <a href="profile.html" class="mobile-menu__link">Profile</a>
+      <a href="catatan-guru.html" class="mobile-menu__link">Catatan</a>
+      <a href="dokumentasi.html" class="mobile-menu__link active">Dokumentasi</a>
+      <a href="kontak.html" class="mobile-menu__link">Kontak</a>
+    </div>
+  </header>
+
+  <main class="dok-page">
+
+    <div class="deco deco--left" aria-hidden="true">
+      <svg viewBox="0 0 180 900" fill="none">
+        <rect x="18"  y="0"  width="22" height="900" rx="11" fill="#4a5c2f" opacity="0.09"/>
+        <rect x="56"  y="60" width="16" height="840" rx="8"  fill="#4a5c2f" opacity="0.06"/>
+        <rect x="90"  y="20" width="12" height="880" rx="6"  fill="#4a5c2f" opacity="0.04"/>
+        <rect x="16"  y="120" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="16"  y="280" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="16"  y="440" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="16"  y="600" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="54"  y="180" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <rect x="54"  y="360" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <rect x="54"  y="520" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <path d="M40 130 Q8 108 -2 72 Q32 90 40 130Z"     fill="#4a5c2f" opacity="0.11"/>
+        <path d="M40 130 Q72 112 82 76 Q48 94 40 130Z"    fill="#4a5c2f" opacity="0.08"/>
+        <path d="M74 190 Q104 170 114 136 Q82 152 74 190Z" fill="#4a5c2f" opacity="0.09"/>
+        <path d="M40 290 Q8 270 -2 234 Q32 252 40 290Z"    fill="#4a5c2f" opacity="0.10"/>
+        <path d="M40 450 Q6 430 -4 394 Q30 412 40 450Z"    fill="#4a5c2f" opacity="0.09"/>
+      </svg>
+    </div>
+
+    <div class="deco deco--right" aria-hidden="true">
+      <svg viewBox="0 0 180 900" fill="none">
+        <rect x="140" y="0"  width="22" height="900" rx="11" fill="#4a5c2f" opacity="0.09"/>
+        <rect x="108" y="60" width="16" height="840" rx="8"  fill="#4a5c2f" opacity="0.06"/>
+        <rect x="78"  y="20" width="12" height="880" rx="6"  fill="#4a5c2f" opacity="0.04"/>
+        <rect x="138" y="120" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="138" y="280" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="138" y="440" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="138" y="600" width="26" height="5" rx="2.5" fill="#c8a96e" opacity="0.20"/>
+        <rect x="106" y="180" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <rect x="106" y="360" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <rect x="106" y="520" width="20" height="4" rx="2"   fill="#c8a96e" opacity="0.14"/>
+        <path d="M140 130 Q172 108 182 72 Q148 90 140 130Z"   fill="#4a5c2f" opacity="0.11"/>
+        <path d="M140 130 Q108 112 98 76 Q132 94 140 130Z"    fill="#4a5c2f" opacity="0.08"/>
+        <path d="M106 190 Q76 170 66 136 Q98 152 106 190Z"    fill="#4a5c2f" opacity="0.09"/>
+        <path d="M140 290 Q172 270 182 234 Q148 252 140 290Z"  fill="#4a5c2f" opacity="0.10"/>
+        <path d="M140 450 Q174 430 184 394 Q150 412 140 450Z"  fill="#4a5c2f" opacity="0.09"/>
+      </svg>
+    </div>
+
+    <div class="deco deco--mountain" aria-hidden="true">
+      <svg viewBox="0 0 1440 220" fill="none" preserveAspectRatio="xMidYMax meet">
+        <path d="M0 220 L300 80 L480 150 L680 30 L880 120 L1060 55 L1240 130 L1440 70 L1440 220Z" fill="#4a5c2f" opacity="0.045"/>
+        <path d="M0 220 L180 110 L380 160 L580 75 L780 145 L980 85 L1180 155 L1440 105 L1440 220Z" fill="#4a5c2f" opacity="0.035"/>
+      </svg>
+    </div>
+
+    <section class="dok-hero">
+      <p class="dok-hero__sub">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e"/>
+          <path d="M10 18 Q3 14 3 9 Q6 3 10 8" fill="#c8a96e" opacity="0.4"/>
+          <path d="M10 18 Q17 14 17 9 Q14 3 10 8" fill="#c8a96e" opacity="0.4"/>
+        </svg>
+        DOKUMENTASI KEGIATAN
+      </p>
+      <h1 class="dok-hero__title">Dokumentasi Kerajinan Alam</h1>
+      <div class="dok-hero__divider">
+        <span></span>
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e" opacity="0.9"/>
+          <path d="M10 18 Q3 14 3 9 Q6 3 10 8"  fill="#c8a96e" opacity="0.45"/>
+          <path d="M10 18 Q17 14 17 9 Q14 3 10 8" fill="#c8a96e" opacity="0.45"/>
+        </svg>
+        <span></span>
+      </div>
+      <p class="dok-hero__desc">
+        Temukan momen berharga dari proses pembuatan, kegiatan tim,<br class="br-d"/>
+        hingga karya bambu yang telah dihasilkan dengan penuh cinta dan dedikasi.
+      </p>
+
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" data-filter="semua">Semua</button>
+        <button class="filter-tab" data-filter="video">Video</button>
+        <button class="filter-tab" data-filter="foto">Foto Kegiatan</button>
+        <button class="filter-tab" data-filter="produksi">Proses Produksi</button>
+        <button class="filter-tab" data-filter="event">Pameran &amp; Event</button>
+      </div>
+    </section>
+
+    <div class="dok-content">
+
+      <section class="dok-section" id="sectionVideo" data-category="video">
+        <div class="dok-section__head">
+          <h2 class="dok-section__title">Video Dokumentasi</h2>
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+            <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e"/>
+          </svg>
+        </div>
+
+        <div class="video-slider-wrap">
+          <button class="slider-nav slider-nav--prev" id="videoPrev" aria-label="Sebelumnya">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+
+          <div class="video-slider" id="videoSlider">
+
+            <div class="video-card" data-category="video">
+              <div class="video-card__thumb">
+                <img src="tubv1.jpeg" alt="thumbnail">
+                <video preload="metadata" style="display: none;">
+                    <source src="v1dok.mp4" type="video/mp4">
+                </video>
+                <button class="play-btn" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="vid-duration">00:19</span>
+              </div>
+              <div class="video-card__info">
+                <h3 class="video-card__title">Proses Pengambilan Bambu</h3>
+                <p class="video-card__meta">— • Kerajinan Alam</p>
+              </div>
+            </div>
+
+            <div class="video-card" data-category="video">
+              <div class="video-card__thumb">
+                <img src="tub2.png" alt="thumbnail">
+                <div class="vid-placeholder">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <video preload="metadata" style="display: none;">
+                    <source src="v2dok.mp4" type="video/mp4">
+                </video>
+                <button class="play-btn" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="vid-duration">00:27</span>
+              </div>
+              <div class="video-card__info">
+                <h3 class="video-card__title">Pengambilan Bambu</h3>
+                <p class="video-card__meta">— • Kerajinan Alam</p>
+              </div>
+            </div>
+
+            <div class="video-card" data-category="video">
+              <div class="video-card__thumb">
+                <img src="tub3.png" alt="thumbnail">
+                <div class="vid-placeholder">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <video preload="metadata" style="display: none;">
+                    <source src="v3dok.mp4" type="video/mp4">
+                </video>
+                <button class="play-btn" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="vid-duration">00:22</span>
+              </div>
+              <div class="video-card__info">
+                <h3 class="video-card__title">Pengambilan & Pemotongan</h3>
+                <p class="video-card__meta">— • Kerajinan Alam</p>
+              </div>
+            </div>
+
+            <div class="video-card" data-category="video">
+              <div class="video-card__thumb">
+                <img src="tub4.png" alt="thumbnail">
+                <div class="vid-placeholder">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <video preload="metadata" style="display: none;">
+                    <source src="v4dok.mp4" type="video/mp4">
+                </video>
+                <button class="play-btn" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="vid-duration">00:35</span>
+              </div>
+              <div class="video-card__info">
+                <h3 class="video-card__title">Pembuatan produk</h3>
+                <p class="video-card__meta">— • Kerajinan Alam</p>
+              </div>
+            </div>
+
+            <div class="video-card" data-category="video">
+              <div class="video-card__thumb">
+                <img src="tub5.png" alt="thumbnail">
+                <div class="vid-placeholder">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <video preload="metadata" style="display: none;">
+                    <source src="v5dok.mp4" type="video/mp4">
+                </video>
+                <button class="play-btn" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="vid-duration">01:08</span>
+              </div>
+              <div class="video-card__info">
+                <h3 class="video-card__title">Pemotongan Produk (2)</h3>
+                <p class="video-card__meta">— • Kerajinan Alam</p>
+              </div>
+            </div>
+
+          </div><button class="slider-nav slider-nav--next" id="videoNext" aria-label="Berikutnya">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="dok-section" id="sectionFoto" data-category="foto">
+        <div class="dok-section__head">
+          <h2 class="dok-section__title">Foto Dokumentasi</h2>
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+            <path d="M10 18 Q5 13 7 7 Q10 2 13 7 Q15 13 10 18Z" fill="#c8a96e"/>
+          </svg>
+        </div>
+
+        <div class="foto-grid" id="fotoGrid">
+
+          <!-- Foto besar (1 saja) -->
+          <div class="foto-item foto-item--tall" data-category="dokumen">
+            <div class="foto-placeholder">
+              <img src="dokutama.png" alt="Dokumentasi 1">
+            </div>
+            <div class="foto-overlay"><p>Hasil akhir produk</p></div>
+          </div>
+
+          <!-- 8 foto kecil tampil awal -->
+          <div class="foto-item" data-category="foto">
+            <div class="foto-placeholder"><img src="dok2.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>foto saat kerja kelompok</p></div>
+          </div>
+
+          <div class="foto-item" data-category="produksi">
+            <div class="foto-placeholder"><img src="dok3.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>Pengerjaan produk</p></div>
+          </div>
+
+          <div class="foto-item" data-category="produksi">
+            <div class="foto-placeholder"><img src="dok4.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengerjaan produk</p></div>
+          </div>
+
+          <div class="foto-item" data-category="produksi">
+            <div class="foto-placeholder"><img src="dok5.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>Pengerjaan produk</p></div>
+          </div>
+
+          <div class="foto-item" data-category="foto">
+            <div class="foto-placeholder"><img src="dok6.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>foto orang</p></div>
+          </div>
+
+          <div class="foto-item" data-category="foto">
+            <div class="foto-placeholder"><img src="dok7.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengambilan bahan</p></div>
+          </div>
+
+          <div class="foto-item" data-category="foto">
+            <div class="foto-placeholder"><img src="dok8.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>foto bahan</p></div>
+          </div>
+   
+          <div class="foto-item" data-category="produksi">
+            <div class="foto-placeholder"><img src="dok9.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>potong bambu</p></div>
+          </div>
+
+          <div class="foto-item" data-category="produksi">
+            <div class="foto-placeholder"><img src="dok1.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengerjaan produk</p></div>
+          </div>
+
+          <!-- Foto tersembunyi — muncul saat klik "Lihat Lebih Banyak" -->
+
+          <div class="foto-item foto-hidden" data-category="foto" style="display:none;">
+            <div class="foto-placeholder"><img src="dok10.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>foto produk</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok11.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengambilan bambu</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok12.jpeg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>penamaan produk</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok13.jpg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pemotongan bambu</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok14.jpg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>Pengerjaan produk</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="foto" style="display:none;">
+            <div class="foto-placeholder"><img src="dok15.jpg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>foto kerja kelompok</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok16.jpg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengerjaan produk</p></div>
+          </div>
+
+          <div class="foto-item foto-hidden" data-category="produksi" style="display:none;">
+            <div class="foto-placeholder"><img src="dok18.jpg" alt="dokumen"></div>
+            <div class="foto-overlay"><p>pengerjaan produk</p></div>
+          </div>
+
+        </div><div class="dok-more">
+          <button class="btn-more" id="btnMore">
+            Lihat Lebih Banyak
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </section>
+
+    </div><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto besar">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="lightbox__img-wrap" id="lightboxImg"></div>
+    </div>
+
+    <div class="video-lightbox" id="videoLightbox" role="dialog" aria-modal="true" aria-label="Video Player besar">
+      <button id="videoLightboxClose" aria-label="Tutup Video">✕</button>
+      <video id="videoPlayer" controls></video>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="logo.png" alt="" height="auto" width="100px">
+        <span>Kerajinan Alam</span>
+        <p>Keindahan Nusantara dalam setiap serat bambu.</p>
+      </div>
+      <div class="footer__copy">
+        &copy; 2026 Kerajinan Alam. Semua hak dilindungi.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Navbar ─────────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-menu__link').forEach(l => {
+      l.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ── Filter tabs ─────────────────────────────────────── */
+    const tabs = document.querySelectorAll('.filter-tab');
+    const secVideo = document.getElementById('sectionVideo');
+    const secFoto  = document.getElementById('sectionFoto');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const f = tab.dataset.filter;
+
+        if (f === 'semua') {
+          secVideo.style.display = '';
+          secFoto.style.display  = '';
+        } else if (f === 'video') {
+          secVideo.style.display = '';
+          secFoto.style.display  = 'none';
+        } else {
+          secVideo.style.display = 'none';
+          secFoto.style.display  = '';
+        }
+
+        document.querySelectorAll('.foto-item').forEach(item => {
+          const cats = item.dataset.category || '';
+          if (f === 'semua' || f === 'foto' || cats.includes(f)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ── Video slider ────────────────────────────────────── */
+    const slider   = document.getElementById('videoSlider');
+    const prevBtn  = document.getElementById('videoPrev');
+    const nextBtn  = document.getElementById('videoNext');
+
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: slider.offsetWidth * 0.8, behavior: 'smooth' });
+    });
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: -slider.offsetWidth * 0.8, behavior: 'smooth' });
+    });
+
+    /* ── Fungsi Video Pop-Up Menjadi Besar (Video Lightbox) ── */
+    const videoLightbox = document.getElementById('videoLightbox');
+    const videoPlayer   = document.getElementById('videoPlayer');
+    const videoClose    = document.getElementById('videoLightboxClose');
+
+    // Menangkap klik tombol play di setiap card video
+    document.querySelectorAll('.video-card').forEach(card => {
+      const playBtn = card.querySelector('.play-btn');
+      const innerSource = card.querySelector('video source');
+
+      if (playBtn && innerSource) {
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation(); // Mencegah bentrokan event
+          const videoSrc = innerSource.getAttribute('src');
+          
+          if (videoSrc) {
+            videoPlayer.src = videoSrc;
+            videoLightbox.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Mengunci scroll body belakang
+            videoPlayer.play();
+          }
+        });
+      }
+    });
+
+    function closeVideoLightbox() {
+      videoPlayer.pause();
+      videoPlayer.src = '';
+      videoLightbox.classList.remove('open');
+      document.body.style.overflow = ''; // Mengaktifkan kembali scroll body
+    }
+
+    if (videoClose) videoClose.addEventListener('click', closeVideoLightbox);
+    if (videoLightbox) {
+      videoLightbox.addEventListener('click', e => {
+        if (e.target === videoLightbox) closeVideoLightbox();
+      });
+    }
+
+    /* ── Lightbox untuk foto ─────────────────────────────── */
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.foto-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const inner = item.querySelector('.foto-placeholder img, img');
+        lightboxImg.innerHTML = inner ? inner.outerHTML : '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Menutup pop-up menggunakan tombol Escape keyboard
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeVideoLightbox();
+      }
+    });
+
+    /* ── Btn lihat lebih banyak ──────────────────────────── */
+    document.getElementById('btnMore').addEventListener('click', function() {
+      const hiddenFotos = document.querySelectorAll('.foto-item.foto-hidden');
+      hiddenFotos.forEach(item => { item.style.display = ''; });
+      this.textContent = 'Semua foto telah ditampilkan';
+      this.disabled = true;
+      this.style.opacity = '0.5';
+    });
+  </script>
+
+</body>
+</html>

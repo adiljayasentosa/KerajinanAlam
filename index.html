@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Kerajinan Alam</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="login-card">
+
+    <!-- ══════════════════════════════════════════════
+         KOLOM KIRI — foto & brand
+    ══════════════════════════════════════════════ -->
+    <div class="login-left">
+
+      <!-- ▸ FOTO LATAR BELAKANG
+           Ganti "foto.jpg" dengan nama file foto kamu
+           Taruh file foto di folder yang sama dengan login.html
+           Contoh: src="rumah-jawa.jpg"
+      -->
+      <img
+        class="bg-photo"
+        src="foto.jpg"
+        alt="Raja Ampat"
+      />
+
+      <!-- Overlay gelap di atas foto (biar teks terbaca) -->
+      <div class="bg-overlay"></div>
+
+      <!-- Ornamen batik pojok -->
+      <div class="batik-ornamen" aria-hidden="true">
+        <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+          <path d="M120 0 Q80 0 60 40 Q40 80 0 120" stroke="#c8a96e" stroke-width="1.2" opacity="0.5" fill="none"/>
+          <path d="M120 25 Q88 25 68 58 Q48 91 20 120" stroke="#c8a96e" stroke-width="0.8" opacity="0.35" fill="none"/>
+          <circle cx="108" cy="12" r="4" fill="#c8a96e" opacity="0.4"/>
+          <circle cx="92"  cy="28" r="3" fill="#c8a96e" opacity="0.3"/>
+          <circle cx="76"  cy="44" r="2" fill="#c8a96e" opacity="0.2"/>
+        </svg>
+      </div>
+
+      <!-- Brand / Logo -->
+      <div class="login-brand">
+
+        <!-- ▸ LOGO
+             Ganti "logo.png" dengan nama file logo kamu
+             Gunakan PNG transparan untuk hasil terbaik
+             Contoh: src="logo-adiljaya.png"
+        -->
+        <div class="brand-logo">
+          <img
+            src="logo.png"
+            alt="Logo Adiljaya"
+            onerror="this.parentElement.classList.add('no-logo')"
+          />
+        </div>
+
+        <h1 class="brand-name">Kerajinan Alam</h1>
+        <p class="brand-tagline">KARYA &bull; BUDAYA &bull; NUSANTARA</p>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         KOLOM KANAN — form login
+    ══════════════════════════════════════════════ -->
+    <div class="login-right">
+      <div class="login-form-wrap">
+
+        <h2 class="login-title">Selamat Datang!</h2>
+
+        <!-- Divider ornamen -->
+        <div class="login-divider">
+          <span></span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="3" fill="#c8a96e"/>
+            <path d="M10 2L10 6M10 14L10 18M2 10L6 10M14 10L18 10"
+                  stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10" cy="2"  r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="10" cy="18" r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="2"  cy="10" r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="18" cy="10" r="1.2" fill="#c8a96e" opacity="0.5"/>
+          </svg>
+          <span></span>
+        </div>
+
+        <p class="login-subtitle">
+          Masukkan nama Anda untuk<br/>mengakses website ini
+        </p>
+
+        <!-- Ikon user -->
+        <div class="user-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+               stroke="#4a5c2f" stroke-width="1.6">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+
+        <!-- Form -->
+        <div class="login-form">
+
+          <div class="field-group">
+            <label class="field-label" for="username">Username</label>
+            <div class="field-wrap">
+              <input
+                class="field-input"
+                type="text"
+                id="username"
+                placeholder="Masukkan nama Anda..."
+                autocomplete="off"
+                maxlength="50"
+              />
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="#c8a96e" stroke-width="1.5">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </span>
+            </div>
+            <p class="field-error" id="fieldError"></p>
+          </div>
+
+          <button class="btn-masuk" id="btnMasuk" type="button">
+            <span id="btnText">Masuk</span>
+            <span id="btnSpinner" class="spinner" style="display:none"></span>
+            <svg id="btnArrow" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="white" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+        </div>
+
+        <!-- Divider bawah -->
+        <div class="login-divider">
+          <span></span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="3" fill="#c8a96e"/>
+            <path d="M10 2L10 6M10 14L10 18M2 10L6 10M14 10L18 10"
+                  stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10" cy="2"  r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="10" cy="18" r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="2"  cy="10" r="1.2" fill="#c8a96e" opacity="0.5"/>
+            <circle cx="18" cy="10" r="1.2" fill="#c8a96e" opacity="0.5"/>
+          </svg>
+          <span></span>
+        </div>
+
+        <p class="login-quote">"Melestarikan budaya, menginspirasi masa depan."</p>
+
+        <!-- Ornamen daun -->
+        <div class="leaf-ornamen" aria-hidden="true">
+          <svg width="56" height="26" viewBox="0 0 60 28" fill="none">
+            <path d="M30 28 Q10 20 5 8 Q18 12 30 28Z"  fill="#c8a96e" opacity="0.5"/>
+            <path d="M30 28 Q50 20 55 8 Q42 12 30 28Z" fill="#c8a96e" opacity="0.5"/>
+            <path d="M30 28 Q22 18 20 4 Q28 10 30 28Z" fill="#c8a96e" opacity="0.3"/>
+            <path d="M30 28 Q38 18 40 4 Q32 10 30 28Z" fill="#c8a96e" opacity="0.3"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast notifikasi -->
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script>
+    // ============================================================
+    // KONFIGURASI — Apps Script URL
+    // ============================================================
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbye6Iaop17KryoQB9QyXGrrKVtkpJ3_faC_f4H_eQbltggSc-m5hl_AxfL9BSKBJNqQCg/exec';
+    // ============================================================
+
+    const input      = document.getElementById('username');
+    const btnMasuk   = document.getElementById('btnMasuk');
+    const btnText    = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const btnArrow   = document.getElementById('btnArrow');
+    const errEl      = document.getElementById('fieldError');
+    const toast      = document.getElementById('toast');
+
+    function getWaktuLogin() {
+      return new Date().toLocaleString('id-ID', {
+        weekday: 'long', year: 'numeric', month: 'long',
+        day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZone: 'Asia/Jakarta'
+      }) + ' WIB';
+    }
+
+    function showToast(msg, type = 'success') {
+      toast.textContent = msg;
+      toast.className   = `toast toast--${type} toast--show`;
+      setTimeout(() => { toast.className = 'toast'; }, 3000);
+    }
+
+    function setLoading(on) {
+      btnMasuk.disabled        = on;
+      btnText.textContent      = on ? 'Memproses...' : 'Masuk';
+      btnSpinner.style.display = on ? 'block' : 'none';
+      btnArrow.style.display   = on ? 'none'  : 'block';
+    }
+
+    async function kirimKeSheets(username, waktu) {
+      // Pakai no-cors agar tidak ada CORS error
+      // Data tetap terkirim walau response tidak terbaca
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, waktuLogin: waktu })
+      });
+    }
+
+    async function handleLogin() {
+      const username = input.value.trim();
+
+      if (!username) {
+        errEl.textContent = 'Username tidak boleh kosong!';
+        input.classList.add('field-input--error');
+        input.focus();
+        return;
+      }
+      if (username.length < 3) {
+        errEl.textContent = 'Username minimal 3 karakter.';
+        input.classList.add('field-input--error');
+        input.focus();
+        return;
+      }
+
+      errEl.textContent = '';
+      input.classList.remove('field-input--error');
+      setLoading(true);
+
+      const waktu = getWaktuLogin();
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('loginTime', waktu);
+
+      try {
+        await kirimKeSheets(username, waktu);
+        console.log('✅ Data terkirim:', { username, waktu });
+      } catch (err) {
+        // Tetap lanjut login walau gagal kirim
+        console.warn('⚠️ Gagal kirim data:', err.message);
+      }
+
+      showToast(`Selamat datang, ${username}! 🌿`, 'success');
+      setTimeout(() => {
+        window.location.href = 'beranda.html';
+      }, 1500);
+    }
+
+    btnMasuk.addEventListener('click', handleLogin);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+    input.addEventListener('input', () => {
+      errEl.textContent = '';
+      input.classList.remove('field-input--error');
+    });
+    window.addEventListener('load', () => input.focus());
+  </script>
+
+</body>
+</html>

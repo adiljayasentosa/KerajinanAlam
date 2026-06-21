@@ -1,0 +1,385 @@
+/* ============================================================
+   ADILJAYA — login.css  (STANDALONE)
+   ============================================================ */
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e0d0;
+  padding: 1.5rem;
+}
+
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+  --cream:     #faf7f2;
+  --bamboo:    #c8a96e;
+  --bamboo-lt: #dfc99a;
+  --moss:      #4a5c2f;
+  --moss-lt:   #5e7540;
+  --text-dark: #2c2416;
+  --text-mid:  #5c4e36;
+  --text-light:#8a7a62;
+  --border:    rgba(200,169,110,0.30);
+  --error:     #b91c1c;
+  --shadow:    0 24px 64px rgba(44,36,22,0.20);
+}
+
+
+/* ============================================================
+   CARD — layout 2 kolom
+   ============================================================ */
+.login-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 880px;
+  min-height: 540px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: cardIn 0.55s cubic-bezier(.22,.68,0,1.15) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* ============================================================
+   KOLOM KIRI — foto & brand
+   ============================================================ */
+.login-left {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 2.5rem;
+  overflow: hidden;
+  /* Warna fallback kalau foto belum ada */
+  background: linear-gradient(160deg, #c8be9a 0%, #a09070 50%, #788a58 100%);
+}
+
+/* ── Foto latar belakang ── */
+.bg-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* ── Overlay gelap bawah biar teks terbaca ── */
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20,16,8,0.10) 0%,
+    rgba(20,16,8,0.20) 40%,
+    rgba(20,16,8,0.60) 100%
+  );
+  z-index: 1;
+}
+
+/* ── Ornamen batik pojok kanan atas ── */
+.batik-ornamen {
+  position: absolute;
+  top: 0; right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Brand (logo + nama) ── */
+.login-brand {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+/* Logo wrapper */
+.brand-logo {
+  width: 110x; height: 110px;
+  border-radius: 10%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+/* ▸ Foto logo */
+.brand-logo img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Fallback kalau logo.png tidak ada — tampilkan lingkaran kosong elegan */
+.brand-logo.no-logo {
+  background: rgba(200,169,110,0.25);
+}
+
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.80);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+
+
+/* ============================================================
+   KOLOM KANAN — form
+   ============================================================ */
+.login-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  background: var(--cream);
+}
+
+.login-form-wrap {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Judul */
+.login-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* Divider ornamen */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.login-divider span {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--bamboo), transparent);
+  opacity: 0.5;
+}
+
+/* Subtitle */
+.login-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  text-align: center;
+  line-height: 1.65;
+}
+
+/* Ikon user */
+.user-icon {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(74,92,47,0.08);
+  border: 1.5px solid rgba(74,92,47,0.15);
+  display: flex; align-items: center; justify-content: center;
+  align-self: flex-start;
+}
+
+/* Form */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.field-wrap { position: relative; }
+
+.field-input {
+  width: 100%;
+  padding: 0.85rem 2.8rem 0.85rem 1.1rem;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field-input::placeholder { color: var(--text-light); }
+.field-input:focus {
+  border-color: var(--bamboo);
+  box-shadow: 0 0 0 3px rgba(200,169,110,0.15);
+}
+.field-input--error {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 3px rgba(185,28,28,0.10) !important;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%,75%  { transform: translateX(-5px); }
+  50%      { transform: translateX(5px); }
+}
+
+.field-icon {
+  position: absolute;
+  right: 0.9rem; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+}
+
+.field-error {
+  font-size: 0.76rem;
+  color: var(--error);
+  min-height: 1rem;
+  padding-left: 2px;
+}
+
+/* Tombol masuk */
+.btn-masuk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  background: var(--moss);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(74,92,47,0.30);
+  transition: background 0.22s, transform 0.18s, box-shadow 0.22s;
+  margin-top: 0.2rem;
+}
+.btn-masuk:hover:not(:disabled) {
+  background: var(--moss-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74,92,47,0.36);
+}
+.btn-masuk:active:not(:disabled) { transform: translateY(0); }
+.btn-masuk:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* Spinner */
+.spinner {
+  width: 17px; height: 17px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Quote */
+.login-quote {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Ornamen daun */
+.leaf-ornamen { opacity: 0.7; }
+
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: white;
+  color: var(--text-dark);
+  padding: 0.8rem 1.75rem;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  border-left: 4px solid var(--moss);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 999;
+}
+.toast--show   { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast--error  { border-left-color: var(--error); }
+.toast--success{ border-left-color: var(--moss); }
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE ≤ 680px
+   ============================================================ */
+@media (max-width: 680px) {
+  body { padding: 0; background: var(--cream); align-items: flex-start; }
+
+  .login-card {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+  }
+
+  /* Kolom kiri jadi header di mobile */
+  .login-left {
+    min-height: 260px;
+    border-radius: 0 0 28px 28px;
+    padding: 2rem 1.75rem;
+    align-items: flex-end;
+  }
+
+  .brand-name    { font-size: 1.75rem; }
+  .brand-logo    { width: 58px; height: 58px; }
+
+  .login-right   { padding: 2rem 1.5rem 3rem; align-items: flex-start; }
+  .login-form-wrap { max-width: 100%; }
+  .login-title   { font-size: 1.7rem; }
+}
+
+@media (max-width: 380px) {
+  .login-left  { min-height: 220px; }
+  .login-title { font-size: 1.5rem; }
+  .btn-masuk   { font-size: 0.92rem; }
+}

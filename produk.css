@@ -1,0 +1,247 @@
+/* ============================================================
+   ADILJAYA — produk.css  (List Produk)
+   ============================================================ */
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; font-size: 16px; }
+img   { display: block; max-width: 100%; }
+a     { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; line-height: 1.15; }
+
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+  --cream:        #f5f0e8;
+  --warm-white:   #faf7f2;
+  --bamboo:       #c8a96e;
+  --bamboo-light: #dfc99a;
+  --moss:         #4a5c2f;
+  --moss-light:   #6a7e45;
+  --text-dark:    #2c2416;
+  --text-mid:     #5c4e36;
+  --text-light:   #8a7a62;
+  --border:       rgba(200, 169, 110, 0.25);
+  --shadow-soft:  0 4px 24px rgba(74, 92, 47, 0.08);
+  --shadow-card:  0 8px 32px rgba(44, 36, 22, 0.10);
+  --radius:       12px;
+  --radius-lg:    20px;
+  --nav-h:        72px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245, 240, 232, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, box-shadow .3s;
+}
+.navbar.scrolled { border-color: var(--border); box-shadow: var(--shadow-soft); }
+.navbar__inner {
+  max-width: 1280px; margin: 0 auto;
+  height: var(--nav-h);
+  display: flex; align-items: center; gap: 1.5rem; padding: 0 2rem;
+}
+.navbar__logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.navbar__logo-text { display: flex; flex-direction: column; }
+.navbar__brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--moss); line-height: 1; }
+.navbar__tagline { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.05em; }
+.navbar__links { display: flex; align-items: center; gap: 0.1rem; margin: 0 auto; }
+.navbar__link {
+  font-size: 0.875rem; color: var(--text-mid);
+  padding: 0.4rem 0.75rem; border-radius: 6px;
+  transition: color .2s, background .2s; white-space: nowrap; position: relative;
+}
+.navbar__link:hover { color: var(--moss); background: rgba(74,92,47,.07); }
+.navbar__link.active { color: var(--moss); font-weight: 500; }
+.navbar__link.active::after {
+  content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -2px; width: 18px; height: 2px; background: var(--bamboo); border-radius: 2px;
+}
+.navbar__actions { display: flex; align-items: center; gap: .25rem; flex-shrink: 0; }
+.navbar__icon-btn {
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; color: var(--text-mid); transition: color .2s, background .2s;
+}
+.navbar__icon-btn:hover { color: var(--moss); background: rgba(74,92,47,.07); }
+.cart-btn { position: relative; }
+.cart-badge {
+  position: absolute; top: 4px; right: 4px;
+  background: var(--moss); color: white; font-size: .6rem; font-weight: 600;
+  min-width: 16px; height: 16px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; padding: 0 3px;
+}
+.hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 36px; height: 36px; padding: 6px; border-radius: 8px; transition: background .2s;
+}
+.hamburger:hover { background: rgba(74,92,47,.07); }
+.hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--text-mid);
+  border-radius: 2px; transition: transform .3s, opacity .3s; transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: var(--warm-white); border-top: 1px solid var(--border);
+  max-height: 0; overflow: hidden;
+  opacity: 0; transform: translateY(-8px);
+  transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .32s ease, transform .32s ease;
+  pointer-events: none;
+}
+@media (max-width: 900px) { .mobile-menu { display: flex; } }
+.mobile-menu.open { max-height: 520px; opacity: 1; transform: translateY(0); pointer-events: auto; padding: .5rem 0 1rem; }
+.mobile-menu__link {
+  display: block; padding: .9rem 1.75rem; font-size: 1.05rem; color: var(--text-mid);
+  border-left: 3px solid transparent;
+  opacity: 0; transform: translateX(-14px);
+  transition: color .2s, border-color .2s, background .2s, opacity .28s ease, transform .28s ease;
+}
+.mobile-menu.open .mobile-menu__link:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:.06s; }
+.mobile-menu.open .mobile-menu__link:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:.12s; }
+.mobile-menu.open .mobile-menu__link:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:.18s; }
+.mobile-menu.open .mobile-menu__link:nth-child(4) { opacity:1; transform:translateX(0); transition-delay:.24s; }
+.mobile-menu.open .mobile-menu__link:nth-child(5) { opacity:1; transform:translateX(0); transition-delay:.30s; }
+.mobile-menu.open .mobile-menu__link:nth-child(6) { opacity:1; transform:translateX(0); transition-delay:.36s; }
+.mobile-menu__link:hover,
+.mobile-menu__link.active { color: var(--moss); border-left-color: var(--bamboo); background: rgba(74,92,47,.05); }
+.mobile-menu__link + .mobile-menu__link { border-top: 1px solid rgba(200,169,110,.12); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--text-dark); color: rgba(245,240,232,.7); padding: 3rem 2rem 2rem; }
+.footer__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+.footer__brand { display: flex; flex-direction: column; gap: .35rem; }
+.footer__brand span { display: flex; align-items: center; gap: 8px; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--bamboo); }
+.footer__brand p { font-size: .82rem; color: rgba(245,240,232,.5); margin-top: .2rem; }
+.footer__copy { font-size: .8rem; color: rgba(245,240,232,.35); }
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb { background: var(--warm-white); border-bottom: 1px solid var(--border); }
+.breadcrumb__inner {
+  max-width: 1280px; margin: 0 auto; padding: .75rem 2rem;
+  display: flex; align-items: center; gap: .4rem; font-size: .82rem; color: var(--text-light);
+}
+.breadcrumb__inner a { color: var(--text-mid); transition: color .2s; }
+.breadcrumb__inner a:hover { color: var(--moss); }
+.breadcrumb__inner span { color: var(--text-dark); font-weight: 500; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.produk-main { padding-top: var(--nav-h); }
+
+/* ── Hero ────────────────────────────────────────────────── */
+.produk-hero {
+  position: relative; text-align: center;
+  padding: 4rem 2rem 3rem; overflow: hidden; background: var(--cream);
+}
+.produk-hero__deco { position: absolute; right: 5%; top: 0; width: 180px; height: 100%; pointer-events: none; }
+.produk-hero__deco svg { width: 100%; height: 100%; }
+.produk-hero__title { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--moss); margin-bottom: 1rem; }
+.produk-hero__divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 1.2rem; }
+.produk-hero__divider span { display: block; width: 48px; height: 1.5px; background: linear-gradient(90deg, transparent, var(--bamboo), transparent); }
+.produk-hero__desc { font-size: .98rem; color: var(--text-mid); line-height: 1.8; }
+.br-d { display: block; }
+
+/* ── Grid ────────────────────────────────────────────────── */
+.produk-grid-section { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 5rem; }
+.produk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* ── Kartu Produk ────────────────────────────────────────── */
+.produk-card {
+  background: var(--warm-white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.produk-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+
+.produk-card__img-wrap {
+  position: relative; width: 100%; aspect-ratio: 4/3;
+  background: var(--cream); overflow: hidden;
+}
+
+/* ── Foto produk — tiap kartu punya src sendiri ─────────── */
+.produk-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .4s ease;
+}
+.produk-card:hover .produk-img { transform: scale(1.04); }
+
+.produk-card__wish {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(250,247,242,.88); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-light); transition: color .2s, background .2s;
+}
+.produk-card__wish:hover,
+.produk-card__wish.wished { color: #e05; background: rgba(255,255,255,.95); }
+.produk-card__wish.wished svg { fill: #e05; stroke: #e05; }
+
+.produk-card__body { padding: 1.1rem 1.25rem 1.4rem; }
+.produk-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: .3rem; }
+.produk-card__price { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--moss); font-weight: 600; margin-bottom: .9rem; }
+
+.produk-card__btn {
+  display: flex; align-items: center; gap: 8px; justify-content: center;
+  width: 100%; padding: .65rem 1rem;
+  background: var(--moss); color: white;
+  border-radius: 8px; font-size: .875rem; font-weight: 500;
+  transition: background .2s, transform .15s;
+}
+.produk-card__btn:hover { background: var(--moss-light); transform: translateY(-1px); }
+
+/* Placeholder saat foto belum ada */
+.img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem;
+  background: linear-gradient(135deg, #ede8de, #e0d9cc);
+  border: 2px dashed rgba(200,169,110,.35); color: var(--text-light);
+}
+.img-placeholder span { font-size: .78rem; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .navbar__links { display: none; }
+  .navbar__actions { margin-left: auto; }
+  .hamburger { display: flex; margin-left: .5rem; }
+  .navbar__logo { display: flex; }
+  .navbar__brand { display: block; }
+}
+@media (max-width: 860px) {
+  .produk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  :root { --nav-h: 60px; }
+  .footer__inner { flex-direction: column; align-items: flex-start; }
+  .produk-hero { padding: 2.5rem 1.25rem 2rem; }
+  .produk-hero__title { font-size: 2.2rem; }
+  .br-d { display: none; }
+  .produk-hero__deco { width: 100px; opacity: .5; }
+  .produk-grid-section { padding: 1.5rem 1.25rem 4rem; }
+  .produk-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+}
+@media (max-width: 480px) {
+  .produk-grid { grid-template-columns: 1fr; }
+}
