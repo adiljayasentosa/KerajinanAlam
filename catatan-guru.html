@@ -7,17 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="catatan-guru.css" />
-  <style>
-    /* FIX: Mobile Navbar */
-    .mobile-menu { display: none; }
-    @media (max-width: 1024px) {
-      .navbar__links { display: none !important; }
-      .navbar__actions { margin-left: auto; }
-      .hamburger { display: flex !important; margin-left: .5rem; }
-      .navbar__icon-btn:not(.cart-btn) { display: none !important; }
-      .mobile-menu { display: flex; }
-    }
-  </style>
 </head>
 <body>
 
@@ -140,9 +129,6 @@
           <button class="btn-tambah" id="btnTambah" style="display:none">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
             Buat Catatan
-          </button>
-          <button class="btn-tambah btn-tambah--outline" id="btnHapusSemua" style="display:none" onclick="hapusSemua()">
-            🗑 Hapus Semua
           </button>
         </div>
       </div>
@@ -349,7 +335,6 @@
     // ── Elemen ────────────────────────────────────────────
     const btnTambah      = document.getElementById('btnTambah');
     const btnTambahEmpty = document.getElementById('btnTambahEmpty');
-    const btnHapusSemua  = document.getElementById('btnHapusSemua');
     const btnAdminLogin  = document.getElementById('btnAdminLogin');
     const adminLoginLabel= document.getElementById('adminLoginLabel');
     const modalOverlay   = document.getElementById('modalOverlay');
@@ -374,7 +359,6 @@
       isAdmin = on;
       btnTambah.style.display      = on ? '' : 'none';
       btnTambahEmpty.style.display = on ? '' : 'none';
-      btnHapusSemua.style.display  = on ? '' : 'none';
       adminLoginLabel.textContent  = on ? 'Keluar' : 'Admin';
       btnAdminLogin.classList.toggle('btn-admin-login--active', on);
       // Tampilkan/sembunyikan tombol hapus di semua card
@@ -459,7 +443,7 @@
           headers: { 'X-Access-Key': JSONBIN_ACCESS_KEY }
         });
         const json = await res.json();
-        catatan = Array.isArray(json.record) ? json.record : [];
+        catatan = Array.isArray(json.record) ? json.record.filter(c => c && c.nama && !c.__empty) : [];
       } catch {
         catatan = JSON.parse(localStorage.getItem('catatanGuru') || '[]');
       }
@@ -472,13 +456,15 @@
       localStorage.setItem('catatanGuru', JSON.stringify(catatan));
       if (!CONFIGURED) return;
       try {
+        // Kalau kosong, simpan [{__empty:true}] supaya JSONBin tidak reject
+        const payload = catatan.length > 0 ? catatan : [{__empty: true}];
         await fetch(JSONBIN_URL, {
           method : 'PUT',
           headers: {
             'Content-Type': 'application/json',
             'X-Master-Key': JSONBIN_MASTER_KEY
           },
-          body: JSON.stringify(catatan)
+          body: JSON.stringify(payload)
         });
       } catch {
         console.warn('Gagal simpan ke cloud.');
@@ -620,16 +606,6 @@
       if (!isAdmin) return;
       if (confirm('Hapus catatan ini?')) {
         catatan.splice(i, 1);
-        await saveToCloud();
-        renderCatatan();
-      }
-    }
-
-    async function hapusSemua() {
-      if (!isAdmin) return;
-      if (catatan.length === 0) { alert('Tidak ada catatan untuk dihapus.'); return; }
-      if (confirm(`Hapus semua ${catatan.length} catatan? Tindakan ini tidak bisa dibatalkan.`)) {
-        catatan = [];
         await saveToCloud();
         renderCatatan();
       }
