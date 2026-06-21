@@ -193,7 +193,7 @@ h1, h2, h3 {
 /* Mobile menu */
 .mobile-menu {
   /* Selalu ada di DOM tapi tersembunyi via clip + opacity */
-  display: none; /* Disembunyikan di desktop */
+  display: none;
   flex-direction: column;
   background: var(--warm-white);
   border-top: 1px solid var(--border);
@@ -777,23 +777,25 @@ h1, h2, h3 {
    RESPONSIVE — NAVBAR MOBILE (≤ 768px)
    Navbar desktop tampil di atas 768px
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navbar__links   { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger       { display: flex; margin-left: 0.5rem; }
+  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+  .mobile-menu { display: flex; }
 
   /* Pastikan logo & brand SELALU tampil di mobile */
   .navbar__logo    { display: flex; }
   .navbar__brand   { display: block; font-size: 1.4rem; }
 
-  /* Mobile menu — tampil hanya di mobile */
-  .mobile-menu { display: flex; }
+  /* Mobile menu — sudah dihandle display:flex di base */
+  /* Tidak perlu override display di sini */
 }
 
 /* ============================================================
    RESPONSIVE — TABLET LAYOUT (≤ 900px)
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .hero__product-showcase { right: 2%; }
   .hero__product-img-wrap { width: 300px; height: 240px; }
   .hero__product-glow     { width: 320px; height: 320px; }

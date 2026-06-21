@@ -399,10 +399,12 @@ body {
 /* ============================================================
    RESPONSIVE — NAVBAR MOBILE ≤ 768px
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navbar__links   { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger       { display: flex; margin-left: .5rem; }
+  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+  .mobile-menu { display: flex; }
   .mobile-menu     { display: flex; }
 
   .deco--left,

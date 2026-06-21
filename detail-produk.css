@@ -59,7 +59,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .mobile-menu { display: none; flex-direction: column; background: var(--warm-white); border-top: 1px solid var(--border); max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-8px); transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .32s ease, transform .32s ease; pointer-events: none; }
-@media (max-width: 900px) { .mobile-menu { display: flex; } }
+@media (max-width: 1024px) { .mobile-menu { display: none; } }
 .mobile-menu.open { max-height: 520px; opacity: 1; transform: translateY(0); pointer-events: auto; padding: .5rem 0 1rem; }
 .mobile-menu__link { display: block; padding: .9rem 1.75rem; font-size: 1.05rem; color: var(--text-mid); border-left: 3px solid transparent; opacity: 0; transform: translateX(-14px); transition: color .2s, border-color .2s, background .2s, opacity .28s ease, transform .28s ease; }
 .mobile-menu.open .mobile-menu__link:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:.06s; }
@@ -239,10 +239,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 /* ============================================================
    RESPONSIVE — TABLET ≤ 900px
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navbar__links { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger { display: flex; margin-left: .5rem; }
+  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+  .mobile-menu { display: flex; }
   .navbar__logo { display: flex; }
   .navbar__brand { display: block; }
   .detail-wrap { grid-template-columns: 1fr; gap: 2rem; }

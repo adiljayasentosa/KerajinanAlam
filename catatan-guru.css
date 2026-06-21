@@ -151,7 +151,7 @@ input, textarea, select { font-family: inherit; }
   pointer-events: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .mobile-menu { display: flex; }
 }
 
@@ -199,10 +199,12 @@ input, textarea, select { font-family: inherit; }
 }
 
 /* Navbar responsive */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navbar__links   { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger       { display: flex; margin-left: 0.5rem; }
+  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+  .mobile-menu { display: flex; }
   .navbar__logo    { display: flex; }
   .navbar__brand   { display: block; font-size: 1.4rem; }
 }

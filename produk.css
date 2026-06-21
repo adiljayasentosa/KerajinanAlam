@@ -101,7 +101,7 @@ body {
   transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .32s ease, transform .32s ease;
   pointer-events: none;
 }
-@media (max-width: 900px) { .mobile-menu { display: flex; } }
+@media (max-width: 1024px) { .mobile-menu { display: flex; } }
 .mobile-menu.open { max-height: 520px; opacity: 1; transform: translateY(0); pointer-events: auto; padding: .5rem 0 1rem; }
 .mobile-menu__link {
   display: block; padding: .9rem 1.75rem; font-size: 1.05rem; color: var(--text-mid);
@@ -222,10 +222,12 @@ body {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navbar__links { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger { display: flex; margin-left: .5rem; }
+  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+  .mobile-menu { display: flex; }
   .navbar__logo { display: flex; }
   .navbar__brand { display: block; }
 }

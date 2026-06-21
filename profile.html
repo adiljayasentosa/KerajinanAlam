@@ -9,6 +9,17 @@
   <!-- Profile-specific styles -->
   <link rel="stylesheet" href="profil.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* FIX: Mobile Navbar */
+    .mobile-menu { display: none; }
+    @media (max-width: 1024px) {
+      .navbar__links { display: none !important; }
+      .navbar__actions { margin-left: auto; }
+      .hamburger { display: flex !important; margin-left: .5rem; }
+      .navbar__icon-btn:not(.cart-btn) { display: none !important; }
+      .mobile-menu { display: flex; }
+    }
+  </style>
 </head>
 <body>
 
