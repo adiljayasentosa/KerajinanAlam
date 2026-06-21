@@ -141,6 +141,9 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
             Buat Catatan
           </button>
+          <button class="btn-tambah btn-tambah--outline" id="btnHapusSemua" style="display:none" onclick="hapusSemua()">
+            🗑 Hapus Semua
+          </button>
         </div>
       </div>
 
@@ -346,6 +349,7 @@
     // ── Elemen ────────────────────────────────────────────
     const btnTambah      = document.getElementById('btnTambah');
     const btnTambahEmpty = document.getElementById('btnTambahEmpty');
+    const btnHapusSemua  = document.getElementById('btnHapusSemua');
     const btnAdminLogin  = document.getElementById('btnAdminLogin');
     const adminLoginLabel= document.getElementById('adminLoginLabel');
     const modalOverlay   = document.getElementById('modalOverlay');
@@ -370,6 +374,7 @@
       isAdmin = on;
       btnTambah.style.display      = on ? '' : 'none';
       btnTambahEmpty.style.display = on ? '' : 'none';
+      btnHapusSemua.style.display  = on ? '' : 'none';
       adminLoginLabel.textContent  = on ? 'Keluar' : 'Admin';
       btnAdminLogin.classList.toggle('btn-admin-login--active', on);
       // Tampilkan/sembunyikan tombol hapus di semua card
@@ -615,6 +620,16 @@
       if (!isAdmin) return;
       if (confirm('Hapus catatan ini?')) {
         catatan.splice(i, 1);
+        await saveToCloud();
+        renderCatatan();
+      }
+    }
+
+    async function hapusSemua() {
+      if (!isAdmin) return;
+      if (catatan.length === 0) { alert('Tidak ada catatan untuk dihapus.'); return; }
+      if (confirm(`Hapus semua ${catatan.length} catatan? Tindakan ini tidak bisa dibatalkan.`)) {
+        catatan = [];
         await saveToCloud();
         renderCatatan();
       }

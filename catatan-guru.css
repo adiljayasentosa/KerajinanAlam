@@ -185,6 +185,8 @@ input, textarea, select { font-family: inherit; }
 .mobile-menu.open .mobile-menu__link:nth-child(3) { opacity:1; transform:translateX(0); transition-delay: 0.18s; }
 .mobile-menu.open .mobile-menu__link:nth-child(4) { opacity:1; transform:translateX(0); transition-delay: 0.24s; }
 .mobile-menu.open .mobile-menu__link:nth-child(5) { opacity:1; transform:translateX(0); transition-delay: 0.30s; }
+.mobile-menu.open .mobile-menu__link:nth-child(6) { opacity:1; transform:translateX(0); transition-delay: 0.36s; }
+.mobile-menu.open .mobile-menu__link:nth-child(6) { opacity:1; transform:translateX(0); transition-delay: 0.36s; }
 
 .mobile-menu__link:hover,
 .mobile-menu__link.active {
@@ -203,8 +205,6 @@ input, textarea, select { font-family: inherit; }
   .navbar__links   { display: none; }
   .navbar__actions { margin-left: auto; }
   .hamburger       { display: flex; margin-left: 0.5rem; }
-  .navbar__icon-btn:not(.cart-btn) { display: none !important; }
-  .mobile-menu { display: flex; }
   .navbar__logo    { display: flex; }
   .navbar__brand   { display: block; font-size: 1.4rem; }
 }
